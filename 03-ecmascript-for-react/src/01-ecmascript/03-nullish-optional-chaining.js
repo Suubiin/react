@@ -5,11 +5,12 @@
 // --------------------------------------------------------------------------
 
 function nullish() {
-  let value = 0;
+  let value = 0;  // 개발자의 의도!!!
 
   let result = value || 100;
   console.log({ '||': result });
 
+  // nullish: Web Native
   function isNullOrUndefined(value) {
     return value === null || value === undefined ? true : false;
   }
@@ -19,14 +20,18 @@ function nullish() {
 
   // 🔶 null 병합 연산자 코드를 작성합니다.
   // 참고: https://mzl.la/3vQUYin | https://mzl.la/3PXiOQ9
+  result = value ?? 100;
+  console.log({'??', result});
 }
 
 function optionalChaining() {
   const topic = {
     _title: '매년 업데이트 되는 ECMAScript',
+    // GETTER
     getTitle() {
       return this._title;
     },
+    // SETTER
     setTitle(value) {
       this._title = value;
     },
@@ -54,7 +59,7 @@ function optionalChaining() {
   console.log(topic.getName());
 }
 
-function run() {
+function run() {a
   nullish();
   optionalChaining();
 }
