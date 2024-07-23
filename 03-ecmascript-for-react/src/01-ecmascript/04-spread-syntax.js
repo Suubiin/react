@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------
 // spread syntax
-// - 전개 구문을 사용해 배열 병합
-// - 전개 구문을 사용해 객체 병합
+// - 전개 구문을 사용해 배열 병합(합성, 복사해서 결합)
+// - 전개 구문을 사용해 객체 병합(합성, 복사해서 결합)
 // --------------------------------------------------------------------------
 
 function combineArray() {
@@ -10,16 +10,19 @@ function combineArray() {
 
   // 두 배열을 하나로 병합하려면?
   const nList = numberList.concat(countList); // A.concat(B)
-  console.log(nList);
+  // console.log(nList);
 
-  // [2, -2, 101, 201, 1] 이와 같은 결과 같은 원한다면?
-  const myResult = numberList.slice(0, 2).concat(countList.slice(0, 2)).concat([numberList.at(-1)]);
-  console.log(myResult);
+  // [2, -2, 101, 201, 1] 이와 같은 결과 값을 원한다면?
+  const myResult = numberList
+    .slice(0, 2)
+    .concat(countList.slice(0, 2))
+    .concat([numberList.at(-1)]);
+  // console.log(myResult);
 
   const combineList = countList
-    .slice(0, 2)  // [101, 201]
-    .concat(numberList) //[2, -2, 1] -> [101, 201, 2, -2, 1]
-    .concat(countList.slice(2));  // [101, 201, 2, -2, 1] -> [101, 201, 2, -2, 1, 301]
+    .slice(0, 2) // [101, 201]
+    .concat(numberList) // [2, -2, 1] -> [101, 201, 2, -2, 1]
+    .concat(countList.slice(2)); // [101, 201, 2, -2, 1] -> [101, 201, 2, -2, 1, 301]
 
   console.log(combineList);
 
@@ -28,7 +31,7 @@ function combineArray() {
   const spreadCombineList = [
     ...countList.slice(0, 2),
     ...numberList,
-    countList.at(-1)
+    countList.at(-1),
   ];
   console.log(spreadCombineList);
 
@@ -37,7 +40,7 @@ function combineArray() {
 }
 
 function combineObject() {
-  // 개발자가 작성한 기본 옵션
+  // 개발자 작성한 기본 옵션
   const defaultOptions = {
     startIndex: 0,
     loop: false,
@@ -50,6 +53,8 @@ function combineObject() {
   // ES5 (2009)
   // Object.assign(obj1, obj2, obj3, ..., objN)
   const combineOptions = Object.assign({}, defaultOptions, customOptions);
+
+  // console.log(defaultOptions);
   console.log(combineOptions);
   console.log(defaultOptions);
 
@@ -57,8 +62,9 @@ function combineObject() {
   // 참고: https://mzl.la/43TCLgA
   const spreadCombineOptions = {
     ...defaultOptions,
-    ...customOptions
+    ...customOptions,
   };
+
   console.log(spreadCombineOptions);
 
   // 아래 결과 값이 true가 나와야 합니다.
