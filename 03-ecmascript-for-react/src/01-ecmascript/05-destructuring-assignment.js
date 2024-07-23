@@ -78,14 +78,14 @@ function spreadRender() {
     ],
   };
 
-  const rendredResult = renderTable(koreanFoods);
-  console.log(rendredResult);
+  const renderedResult = renderTable(koreanFoods);
+  console.log(renderedResult);
 
   function renderTable(data) {
     return removeSpaceHTMLString(/* html */ `
       <table class="table">
         <caption class="sr-only">${data.caption}</caption>
-        ${data.rows.reduce(function (htmlString, item) {
+        ${data.rows.reduce(function (htmlString, { headline, content }  /* item: {headline, content} */) {
           // 🔶 구조 분해 할당 구문을 사용해 item 객체에서 항목을 분해 및 할당합니다.
           // 참고: https://mzl.la/3Jfrwpm
 
